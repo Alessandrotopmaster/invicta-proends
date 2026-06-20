@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invicta Próends - Afiliados</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #1A1A2E;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #0066FF, #FF6B35);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #2A2A3E;
+            border: 2px solid #00C853;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .link-box {
+            background: #1A1A2E;
+            border: 2px dashed #FFD700;
+            padding: 15px;
+            border-radius: 10px;
+            word-break: break-all;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #00C853;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .btn-laranja {
+            background: #FF6B35;
+        }
+        .btn-azul {
+            background: #0066FF;
+        }
+        .voltar {
+            display: inline-block;
+            color: #FFD700;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+        .destaque {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="voltar">← Voltar</a>
+    
+    <div class="header">
+        <h1>💰 Programa de Afiliados</h1>
+        <p>Ganhe comissões vitalícias!</p>
+    </div>
+
+    <div class="card">
+        <h2>🔗 Seu Link Exclusivo</h2>
+        <div class="link-box">
+            https://invictaproends.com/ref/abc123
+        </div>
+        <button onclick="copiar()">📋 Copiar Link</button>
+    </div>
+
+    <div class="card">
+        <h2>💸 Suas Comissões</h2>
+        <div class="destaque">R$ 450,00</div>
+        <p>Total recebido</p>
+        <button class="btn-laranja" onclick="sacar()">💳 Solicitar Saque</button>
+    </div>
+
+    <div class="card">
+        <h2>🎁 Bônus de Indicação</h2>
+        <p>Ganhe <strong>R$ 30,00</strong> quando seu indicado gastar R$ 80,00</p>
+        <p>Bônus pendentes: <span class="destaque">R$ 90,00</span></p>
+    </div>
+
+    <div class="card">
+        <h2>📊 Seus Indicados</h2>
+        <p>Total: <strong>5 pessoas</strong></p>
+        <p>Ativos: <strong>3 pessoas</strong></p>
+        <button class="btn-azul">Ver Lista Completa</button>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Materiais de Divulgação</h2>
+        <p>IA cria materiais automaticamente para você!</p>
+        <button class="btn-laranja">🤖 Criar Material</button>
+    </div>
+
+    <script>
+        function copiar() {
+            alert('✅ Link copiado!');
+        }
+        function sacar() {
+            alert('💸 Saque solicitado! Cai em até 24h.');
+        }
+    </script>
+</body>
+</html>
