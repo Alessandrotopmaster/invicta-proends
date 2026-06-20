@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invicta Próends - Métricas</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #1A1A2E;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .header {
+            background: #0066FF;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .card {
+            background: #2A2A3E;
+            border: 2px solid #00C853;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        .numero {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        .voltar {
+            display: inline-block;
+            color: #FFD700;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="voltar">← Voltar</a>
+    
+    <div class="header">
+        <h1>📊 Painel de Métricas</h1>
+        <p>Acompanhe seus resultados</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div>📦</div>
+            <div class="numero">150</div>
+            <div>Total de Vendas</div>
+        </div>
+        <div class="card">
+            <div>💰</div>
+            <div class="numero">R$ 12.500</div>
+            <div>Receita Total</div>
+        </div>
+        <div class="card">
+            <div>👥</div>
+            <div class="numero">230</div>
+            <div>Afiliados</div>
+        </div>
+        <div class="card">
+            <div>⭐</div>
+            <div class="numero">4.9</div>
+            <div>Avaliação</div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align: left;">
+        <h3 style="color: #FFD700;">📋 Últimos Pedidos</h3>
+        <p>🛒 Pedido #INV-001 - R$ 89,90 ✅</p>
+        <p>🛒 Pedido #INV-002 - R$ 149,90 ✅</p>
+        <p>🛒 Pedido #INV-003 - R$ 29,90 ✅</p>
+    </div>
+
+    <div class="card" style="text-align: left;">
+        <h3 style="color: #FFD700;">🏪 Vendas por Parceiro</h3>
+        <p>📦 Mercado Livre: 80 vendas</p>
+        <p>🛒 Shopee: 45 vendas</p>
+        <p>📦 Amazon: 25 vendas</p>
+    </div>
+</body>
+</html>
