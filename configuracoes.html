@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invicta Próends - Configurações</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #1A1A2E;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .header {
+            background: #0066FF;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #2A2A3E;
+            border: 2px solid #00C853;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        h2 {
+            color: #FFD700;
+            margin: 0 0 15px 0;
+        }
+        label {
+            display: block;
+            color: #FFD700;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #0066FF;
+            background: #1A1A2E;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #00C853;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .voltar {
+            display: inline-block;
+            color: #FFD700;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .alerta {
+            background: rgba(255,215,0,0.1);
+            border: 1px solid #FFD700;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="voltar">← Voltar</a>
+    
+    <div class="header">
+        <h1>⚙️ Configurações</h1>
+        <p>Dados salvos com segurança</p>
+    </div>
+
+    <div class="card">
+        <h2>🔑 Token de Acesso</h2>
+        <div class="alerta">🔒 Seus dados são criptografados</div>
+        <label>Token da Plataforma</label>
+        <input type="password" placeholder="Insira seu token">
+    </div>
+
+    <div class="card">
+        <h2>🏦 Dados Bancários</h2>
+        <label>Banco</label>
+        <select>
+            <option>Selecione...</option>
+            <option>Nubank</option>
+            <option>Mercado Pago</option>
+            <option>Banco do Brasil</option>
+            <option>Bradesco</option>
+            <option>Itaú</option>
+        </select>
+        
+        <label>Agência</label>
+        <input type="text" placeholder="Número da agência">
+        
+        <label>Conta</label>
+        <input type="text" placeholder="Número da conta">
+        
+        <label>Titular</label>
+        <input type="text" placeholder="Nome completo">
+        
+        <label>CPF</label>
+        <input type="text" placeholder="000.000.000-00">
+    </div>
+
+    <div class="card">
+        <h2>💳 Mercado Pago</h2>
+        <label>E-mail da conta</label>
+        <input type="email" placeholder="seu@email.com">
+    </div>
+
+    <div class="card">
+        <h2>▶️ YouTube API</h2>
+        <label>Chave da API</label>
+        <input type="password" placeholder="Chave de integração">
+    </div>
+
+    <button onclick="salvar()">💾 Salvar Configurações</button>
+
+    <script>
+        function salvar() {
+            alert('✅ Configurações salvas com segurança!');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
