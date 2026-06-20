@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invicta Próends - Painel Admin</title>
+    <style>
+        :root {
+            --azul: #0066FF;
+            --amarelo: #FFD700;
+            --verde: #00C853;
+            --laranja: #FF6B35;
+            --preto: #0a0a1a;
+            --cinza: #1a1a2e;
+            --branco: #FFFFFF;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0a1a;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0066FF, #FF6B35);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .card {
+            background: #1a1a2e;
+            border: 2px solid #0066FF;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        h2 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        label {
+            display: block;
+            color: white;
+            margin: 10px 0 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #0a0a1a;
+            border: 2px solid #333;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        input:focus, select:focus {
+            border-color: #0066FF;
+            outline: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #00C853;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0,200,83,0.4);
+        }
+        
+        .btn-azul { background: #0066FF; }
+        .btn-laranja { background: #FF6B35; }
+        .btn-amarelo { background: #FFD700; color: #000; }
+        
+        .voltar {
+            display: inline-block;
+            color: #FFD700;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status-ok {
+            background: rgba(0,200,83,0.2);
+            border: 1px solid #00C853;
+            color: #00C853;
+        }
+        
+        .badge-ativo {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #00C853;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .terminal {
+            background: #000;
+            border: 1px solid #00C853;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            color: #00C853;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="voltar">← Voltar ao site</a>
+        
+        <div class="header">
+            <h1>⚡ PAINEL DE CONTROLE</h1>
+            <p>Invicta Próends - Administração</p>
+        </div>
+        
+        <div class="terminal">
+            <p>> Sistema: <span class="badge-ativo">ONLINE</span></p>
+            <p>> Último acesso: <span id="data"></span></p>
+        </div>
+        
+        <!-- 1. SENHA MESTRA -->
+        <div class="card">
+            <h2>🔐 Senha Mestra do Sistema</h2>
+            <label>Nova Senha</label>
+            <input type="password" id="senhaAdmin" placeholder="Digite a senha mestra">
+            <label>Confirmar Senha</label>
+            <input type="password" id="confirmarSenha" placeholder="Confirme a senha">
+            <button onclick="salvarSenha()">💾 Salvar Senha</button>
+        </div>
+        
+        <!-- 2. API YOUTUBE -->
+        <div class="card">
+            <h2>▶️ Integração YouTube</h2>
+            <div class="status status-ok">API YouTube</div>
+            <label>Chave da API do YouTube</label>
+            <input type="password" id="apiYouTube" placeholder="AIzaSy...">
+            <label>ID do Canal</label>
+            <input type="text" id="canalId" placeholder="UCxxxxxxxx">
+            <button class="btn-azul" onclick="salvarYouTube()">💾 Salvar YouTube</button>
+        </div>
+        
+        <!-- 3. INTELIGÊNCIA ARTIFICIAL -->
+        <div class="card">
+            <h2>🤖 Inteligência Artificial</h2>
+            <label>Provedor de IA</label>
+            <select id="provedorIA">
+                <option value="">Selecione o provedor...</option>
+                <option value="openai">OpenAI (ChatGPT)</option>
+                <option value="google">Google AI (Gemini)</option>
+                <option value="anthropic">Anthropic (Claude)</option>
+            </select>
+            <label>API Key da IA</label>
+            <input type="password" id="apiKeyIA" placeholder="sk-...">
+            <label>Modelo</label>
+            <select id="modeloIA">
+                <option value="">Selecione o modelo...</option>
+                <option value="gpt-4">GPT-4</option>
+                <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                <option value="gemini-pro">Gemini Pro</option>
+                <option value="claude-3">Claude 3</option>
+            </select>
+            <button class="btn-laranja" onclick="salvarIA()">💾 Salvar IA</button>
+        </div>
+        
+        <!-- 4. DADOS BANCÁRIOS -->
+        <div class="card">
+            <h2>🏦 Integração Bancária</h2>
+            <label>Token Mercado Pago</label>
+            <input type="password" id="tokenMP" placeholder="TEST-123456...">
+            <label>Chave PIX</label>
+            <input type="text" id="chavePix" placeholder="CPF, email ou telefone">
+            <label>Token API Bancária</label>
+            <input type="password" id="tokenBanco" placeholder="Token do banco">
+            <button class="btn-amarelo" onclick="salvarBancario()">💾 Salvar Dados Bancários</button>
+        </div>
+        
+        <!-- 5. REDES SOCIAIS -->
+        <div class="card">
+            <h2>📱 Redes Sociais</h2>
+            <label>Token TikTok</label>
+            <input type="password" id="tokenTikTok" placeholder="Token TikTok">
+            <label>Token Instagram</label>
+            <input type="password" id="tokenInstagram" placeholder="Token Instagram">
+            <button class="btn-azul" onclick="salvarRedes()">💾 Salvar Redes</button>
+        </div>
+        
+        <!-- 6. EMAIL -->
+        <div class="card">
+            <h2>📧 Configuração de Email</h2>
+            <label>Email Administrativo</label>
+            <input type="email" id="emailAdmin" placeholder="admin@email.com">
+            <label>Senha do Email</label>
+            <input type="password" id="senhaEmail" placeholder="Senha do email">
+            <button onclick="salvarEmail()">💾 Salvar Email</button>
+        </div>
+        
+        <!-- SALVAR TUDO -->
+        <button style="background: #00C853; font-size: 20px; padding: 20px; margin-top: 20px;" onclick="salvarTudo()">
+            💾 SALVAR TODAS AS CONFIGURAÇÕES
+        </button>
+        
+        <div class="terminal" style="margin-top: 20px;">
+            <p id="log">> Pronto para configurar...</p>
+        </div>
+    </div>
+    
+    <script>
+        // Mostrar data atual
+        document.getElementById('data').textContent = new Date().toLocaleString('pt-BR');
+        
+        // Carregar configurações salvas
+        function carregar() {
+            const config = JSON.parse(localStorage.getItem('invicta_config') || '{}');
+            if (config.apiYouTube) document.getElementById('apiYouTube').value = config.apiYouTube;
+            if (config.apiKeyIA) document.getElementById('apiKeyIA').value = config.apiKeyIA;
+            if (config.tokenMP) document.getElementById('tokenMP').value = config.tokenMP;
+            if (config.chavePix) document.getElementById('chavePix').value = config.chavePix;
+            if (config.emailAdmin) document.getElementById('emailAdmin').value = config.emailAdmin;
+        }
+        carregar();
+        
+        function salvar(chave, valor) {
+            const config = JSON.parse(localStorage.getItem('invicta_config') || '{}');
+            config[chave] = valor;
+            localStorage.setItem('invicta_config', JSON.stringify(config));
+        }
+        
+        function log(msg) {
+            document.getElementById('log').textContent = '> ' + msg;
+        }
+        
+        function salvarSenha() {
+            const s1 = document.getElementById('senhaAdmin').value;
+            const s2 = document.getElementById('confirmarSenha').value;
+            if (s1 !== s2) { alert('❌ Senhas diferentes!'); return; }
+            if (s1.length < 6) { alert('❌ Mínimo 6 caracteres!'); return; }
+            salvar('senhaAdmin', s1);
+            log('✅ Senha mestra salva!');
+            alert('✅ Senha salva!');
+        }
+        
+        function salvarYouTube() {
+            salvar('apiYouTube', document.getElementById('apiYouTube').value);
+            salvar('canalId', document.getElementById('canalId').value);
+            log('✅ YouTube configurado!');
+            alert('✅ YouTube salvo!');
+        }
+        
+        function salvarIA() {
+            salvar('provedorIA', document.getElementById('provedorIA').value);
+            salvar('apiKeyIA', document.getElementById('apiKeyIA').value);
+            salvar('modeloIA', document.getElementById('modeloIA').value);
+            log('✅ IA configurada!');
+            alert('✅ IA salva!');
+        }
+        
+        function salvarBancario() {
+            salvar('tokenMP', document.getElementById('tokenMP').value);
+            salvar('chavePix', document.getElementById('chavePix').value);
+            salvar('tokenBanco', document.getElementById('tokenBanco').value);
+            log('✅ Dados bancários salvos!');
+            alert('✅ Banco salvo!');
+        }
+        
+        function salvarRedes() {
+            salvar('tokenTikTok', document.getElementById('tokenTikTok').value);
+            salvar('tokenInstagram', document.getElementById('tokenInstagram').value);
+            log('✅ Redes sociais salvas!');
+            alert('✅ Redes salvas!');
+        }
+        
+        function salvarEmail() {
+            salvar('emailAdmin', document.getElementById('emailAdmin').value);
+            salvar('senhaEmail', document.getElementById('senhaEmail').value);
+            log('✅ Email configurado!');
+            alert('✅ Email salvo!');
+        }
+        
+        function salvarTudo() {
+            salvarSenha();
+            salvarYouTube();
+            salvarIA();
+            salvarBancario();
+            salvarRedes();
+            salvarEmail();
+            log('🚀 PLATAFORMA COMPLETA CONFIGURADA!');
+            alert('✅🚀 TUDO CONFIGURADO COM SUCESSO!\n\nSua plataforma está pronta!');
+        }
+    </script>
+</body>
+</html>
